@@ -2,18 +2,21 @@ name: Go App Scheduled Run
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '* * * * *'  # This schedules the job to run every minute
+  workflow_dispatch:  # This allows manual triggering of the workflow
 
 jobs:
   run-go-script:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Specifies the runner
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v2  # Checks out your repository
+
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v4  # Sets up Go environment
         with:
-          go-version: '1.19.1'  # Use the latest stable version of Go
+          go-version: '1.19.1'  # Specifies the Go version
 
       - name: Run the Go script
-        run: go run main.go ping "triggered by GitHub Action"
+        run: go run main.go ping "triggered by GitHub Action"  # Runs your Go program
