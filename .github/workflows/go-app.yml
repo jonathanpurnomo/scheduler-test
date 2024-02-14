@@ -2,7 +2,7 @@ name: Go App Scheduled Run
 
 on:
   schedule:
-    - cron: '0 */12 * * *'  # This schedules the job to run every 12 hours
+    - cron: '0 17,23,2,5,8,11,12 * * *'
   workflow_dispatch:  # This allows manual triggering of the workflow
 
 jobs:
